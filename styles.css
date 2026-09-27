@@ -30,7 +30,7 @@
 .case-roadmap .is-current{background:#f1f1ee;padding-inline:10px}
 .github-section>.text-link{margin-top:28px}
 .github-status{color:var(--muted);font-size:17px}
-.contribution-calendar{border-block:1px solid var(--rule);padding:24px 0 18px}
+.contribution-calendar{border-bottom:1px solid var(--rule);padding:10px 0 18px}
 .contribution-summary{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:22px}
 .contribution-summary p{color:var(--ink);font-size:24px}
 .contribution-summary strong{font-size:31px}
