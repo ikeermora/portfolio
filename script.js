@@ -36,72 +36,120 @@ if (requestedSection) {
 
 const githubActivity = document.querySelector("[data-github-activity]");
 
-const describeGithubEvent = (event) => {
-  const repository = event.repo.name.replace("ikeermora/", "");
-  const labels = {
-    PushEvent: "Pushed commits to",
-    CreateEvent: event.payload.ref_type === "repository" ? "Created" : "Created a branch in",
-    PullRequestEvent: "Updated a pull request in",
-    IssuesEvent: "Updated an issue in",
-    IssueCommentEvent: "Commented in",
-    WatchEvent: "Starred"
-  };
-
-  return { label: labels[event.type] || "Contributed to", repository };
-};
-
 if (githubActivity) {
-  fetch("https://api.github.com/users/ikeermora/events/public?per_page=20", {
-    headers: { Accept: "application/vnd.github+json" }
-  })
+  fetch("https://github-contributions-api.jogruber.de/v4/ikeermora?y=last")
     .then((response) => {
       if (!response.ok) {
-        throw new Error("GitHub activity is temporarily unavailable.");
+        throw new Error("GitHub contribution data is temporarily unavailable.");
       }
       return response.json();
     })
-    .then((events) => {
-      const seen = new Set();
-      const recentEvents = events.filter((event) => {
-        const key = `${event.type}:${event.repo.name}`;
-        if (seen.has(key)) return false;
-        seen.add(key);
-        return true;
-      }).slice(0, 4);
-
-      if (!recentEvents.length) {
-        throw new Error("No recent public activity was returned.");
+    .then((data) => {
+      const contributions = data.contributions || [];
+      if (!contributions.length) {
+        throw new Error("No GitHub contribution data was returned.");
       }
 
-      const list = document.createElement("div");
-      list.className = "github-activity-list";
+      const dateFormatter = new Intl.DateTimeFormat("en", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+        timeZone: "UTC"
+      });
+      const startDate = new Date(`${contributions[0].date}T00:00:00Z`);
+      const startOffset = startDate.getUTCDay();
+      const weekCount = Math.ceil((contributions.length + startOffset) / 7);
+      const total = data.total?.lastYear ?? contributions.reduce((sum, day) => sum + day.count, 0);
 
-      recentEvents.forEach((event) => {
-        const { label, repository } = describeGithubEvent(event);
-        const item = document.createElement("a");
-        const copy = document.createElement("span");
-        const date = document.createElement("time");
+      const calendar = document.createElement("div");
+      const summary = document.createElement("div");
+      const summaryText = document.createElement("p");
+      const totalText = document.createElement("strong");
+      const rangeText = document.createElement("span");
+      const scrollArea = document.createElement("div");
+      const layout = document.createElement("div");
+      const monthLabels = document.createElement("div");
+      const weekdayLabels = document.createElement("div");
+      const grid = document.createElement("div");
+      const legend = document.createElement("div");
 
-        item.className = "github-activity-row";
-        item.href = `https://github.com/${event.repo.name}`;
-        item.target = "_blank";
-        item.rel = "noopener noreferrer";
-        copy.textContent = `${label} ${repository}`;
-        date.dateTime = event.created_at;
-        date.textContent = new Intl.DateTimeFormat("en", {
-          month: "short",
-          day: "numeric",
-          year: "numeric"
-        }).format(new Date(event.created_at));
-        item.append(copy, date);
-        list.append(item);
+      calendar.className = "contribution-calendar";
+      summary.className = "contribution-summary";
+      totalText.textContent = total.toLocaleString("en");
+      summaryText.append(totalText, " contributions in the last year");
+      rangeText.textContent = "Public contributions";
+      summary.append(summaryText, rangeText);
+
+      scrollArea.className = "contribution-scroll";
+      scrollArea.tabIndex = 0;
+      scrollArea.setAttribute("aria-label", "GitHub contribution calendar. Scroll horizontally to see the full year.");
+      layout.className = "contribution-layout";
+      layout.style.setProperty("--calendar-weeks", weekCount);
+      monthLabels.className = "contribution-months";
+      weekdayLabels.className = "contribution-weekdays";
+      grid.className = "contribution-grid";
+      grid.setAttribute("role", "grid");
+      grid.setAttribute("aria-label", `${total} GitHub contributions in the last year`);
+
+      ["", "Mon", "", "Wed", "", "Fri", ""].forEach((label) => {
+        const dayLabel = document.createElement("span");
+        dayLabel.textContent = label;
+        weekdayLabels.append(dayLabel);
       });
 
-      githubActivity.replaceChildren(list);
+      for (let index = 0; index < startOffset; index += 1) {
+        const spacer = document.createElement("span");
+        spacer.className = "contribution-day is-empty";
+        spacer.setAttribute("aria-hidden", "true");
+        grid.append(spacer);
+      }
+
+      contributions.forEach((contribution, index) => {
+        const date = new Date(`${contribution.date}T00:00:00Z`);
+        const day = document.createElement("span");
+        const contributionWord = contribution.count === 1 ? "contribution" : "contributions";
+
+        if (date.getUTCDate() === 1) {
+          const month = document.createElement("span");
+          month.textContent = new Intl.DateTimeFormat("en", { month: "short", timeZone: "UTC" }).format(date);
+          month.style.gridColumn = String(Math.floor((index + startOffset) / 7) + 1);
+          monthLabels.append(month);
+        }
+
+        day.className = "contribution-day";
+        day.dataset.level = String(contribution.level);
+        day.setAttribute("role", "gridcell");
+        day.setAttribute("aria-label", `${contribution.count} ${contributionWord} on ${dateFormatter.format(date)}`);
+        day.title = `${contribution.count} ${contributionWord} on ${dateFormatter.format(date)}`;
+        grid.append(day);
+      });
+
+      legend.className = "contribution-legend";
+      legend.append("Less");
+      for (let level = 0; level <= 4; level += 1) {
+        const swatch = document.createElement("span");
+        swatch.className = "contribution-day";
+        swatch.dataset.level = String(level);
+        swatch.setAttribute("aria-hidden", "true");
+        legend.append(swatch);
+      }
+      legend.append("More");
+
+      layout.append(monthLabels, weekdayLabels, grid);
+      scrollArea.append(layout);
+      calendar.append(summary, scrollArea, legend);
+      githubActivity.replaceChildren(calendar);
+
+      if (window.matchMedia("(max-width: 760px)").matches) {
+        window.requestAnimationFrame(() => {
+          scrollArea.scrollLeft = scrollArea.scrollWidth;
+        });
+      }
+
     })
     .catch(() => {
       const status = githubActivity.querySelector(".github-status");
-      if (status) status.textContent = "Recent public activity is available on GitHub.";
+      if (status) status.textContent = "The contribution calendar is temporarily unavailable. View the live profile on GitHub.";
     });
 }
 
