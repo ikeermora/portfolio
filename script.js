@@ -1,4 +1,111 @@
-// Interactive engineering demonstrations. Navigation and content work without JavaScript.
+// Navigation and content work without JavaScript. This file adds progressive enhancements.
+const sectionLinks = document.querySelectorAll('a[href^="?section="]');
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const openSection = (sectionName) => {
+  const section = document.getElementById(sectionName);
+
+  if (!section) {
+    return false;
+  }
+
+  section.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+  window.history.replaceState(null, "", window.location.pathname);
+  return true;
+};
+
+sectionLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    const url = new URL(link.href, window.location.href);
+
+    if (url.pathname !== window.location.pathname) {
+      return;
+    }
+
+    const sectionName = url.searchParams.get("section");
+    if (sectionName && openSection(sectionName)) {
+      event.preventDefault();
+    }
+  });
+});
+
+const requestedSection = new URLSearchParams(window.location.search).get("section");
+if (requestedSection) {
+  window.requestAnimationFrame(() => openSection(requestedSection));
+}
+
+const githubActivity = document.querySelector("[data-github-activity]");
+
+const describeGithubEvent = (event) => {
+  const repository = event.repo.name.replace("ikeermora/", "");
+  const labels = {
+    PushEvent: "Pushed commits to",
+    CreateEvent: event.payload.ref_type === "repository" ? "Created" : "Created a branch in",
+    PullRequestEvent: "Updated a pull request in",
+    IssuesEvent: "Updated an issue in",
+    IssueCommentEvent: "Commented in",
+    WatchEvent: "Starred"
+  };
+
+  return { label: labels[event.type] || "Contributed to", repository };
+};
+
+if (githubActivity) {
+  fetch("https://api.github.com/users/ikeermora/events/public?per_page=20", {
+    headers: { Accept: "application/vnd.github+json" }
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("GitHub activity is temporarily unavailable.");
+      }
+      return response.json();
+    })
+    .then((events) => {
+      const seen = new Set();
+      const recentEvents = events.filter((event) => {
+        const key = `${event.type}:${event.repo.name}`;
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      }).slice(0, 4);
+
+      if (!recentEvents.length) {
+        throw new Error("No recent public activity was returned.");
+      }
+
+      const list = document.createElement("div");
+      list.className = "github-activity-list";
+
+      recentEvents.forEach((event) => {
+        const { label, repository } = describeGithubEvent(event);
+        const item = document.createElement("a");
+        const copy = document.createElement("span");
+        const date = document.createElement("time");
+
+        item.className = "github-activity-row";
+        item.href = `https://github.com/${event.repo.name}`;
+        item.target = "_blank";
+        item.rel = "noopener noreferrer";
+        copy.textContent = `${label} ${repository}`;
+        date.dateTime = event.created_at;
+        date.textContent = new Intl.DateTimeFormat("en", {
+          month: "short",
+          day: "numeric",
+          year: "numeric"
+        }).format(new Date(event.created_at));
+        item.append(copy, date);
+        list.append(item);
+      });
+
+      githubActivity.replaceChildren(list);
+    })
+    .catch(() => {
+      const status = githubActivity.querySelector(".github-status");
+      if (status) status.textContent = "Recent public activity is available on GitHub.";
+    });
+}
+
+// Interactive engineering demonstrations.
 const setupSimilarityDemo = (demo) => {
   const xRow = demo.querySelector('[data-bit-row="x"]');
   const wRow = demo.querySelector('[data-bit-row="w"]');

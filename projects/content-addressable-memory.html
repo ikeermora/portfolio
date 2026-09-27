@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Content-Addressable Memory | Iker Garcia Morales</title>
+  <meta name="description" content="A synthesizable 4-entry, 32-bit content-addressable memory designed and verified in SystemVerilog.">
+  <link rel="canonical" href="https://ikermora.com/projects/content-addressable-memory.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Content-Addressable Memory | Iker Garcia Morales">
+  <meta property="og:description" content="A synthesizable 4-entry, 32-bit content-addressable memory designed and verified in SystemVerilog.">
+  <meta property="og:url" content="https://ikermora.com/projects/content-addressable-memory.html">
+  <meta property="og:image" content="https://ikermora.com/assets/social-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="../assets/favicon-wafer.png">
+  <link rel="apple-touch-icon" href="../assets/favicon-wafer.png">
+  <link rel="stylesheet" href="../styles.css?v=51">
+  <script src="../analytics-config.js?v=1" defer></script>
+  <script src="../analytics.js?v=1" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="?section=main">Skip to content</a>
+  <header class="site-header shell">
+    <a class="brand" href="../">Iker Garcia Morales</a>
+    <nav aria-label="Primary navigation">
+      <a href="../?section=work">Work</a>
+      <a href="../?section=about">About</a>
+      <a href="../files/Iker%27s%20Resume.pdf" target="_blank" rel="noopener" aria-label="Resume (PDF, opens in a new tab)">Resume</a>
+      <a href="../?section=contact">Contact</a>
+    </nav>
+  </header>
+  <main class="shell" id="main">
+    <section class="page-hero">
+      <p class="eyebrow">RTL / SystemVerilog</p>
+      <h1>Content-Addressable Memory</h1>
+      <p class="hero-intro">A synthesizable 4-entry, 32-bit memory built for parallel lookup.</p>
+      <dl class="project-byline">
+        <div><dt>Language</dt><dd>SystemVerilog</dd></div>
+        <div><dt>Architecture</dt><dd>4 entries, 32 bits</dd></div>
+        <div><dt>Status</dt><dd>Verified</dd></div>
+      </dl>
+    </section>
+    <section class="case-section">
+      <h2>Overview</h2>
+      <div><p>The design stores four 32-bit words and compares a search value against every valid entry at the same time. It reports both match and miss conditions.</p></div>
+    </section>
+    <section class="case-section">
+      <h2>Architecture</h2>
+      <div><p>Synchronous writes update the selected entry and its valid bit. Combinational lookup checks the search value against all valid entries in parallel.</p><div class="product-workflow" aria-label="CAM operation"><span>Write</span><span aria-hidden="true">→</span><span>Validate</span><span aria-hidden="true">→</span><span>Search</span><span aria-hidden="true">→</span><span>Match</span></div></div>
+    </section>
+    <section class="case-section">
+      <h2>Verification</h2>
+      <div><p>A self-checking SystemVerilog testbench covered writes, valid-bit behavior, successful lookups, and misses. All 10 functional tests passed.</p></div>
+    </section>
+    <div class="back-link"><a class="text-link" href="index.html">All projects <span aria-hidden="true">→</span></a></div>
+  </main>
+  <footer class="site-footer shell"><span>© 2026 Iker Garcia Morales</span><a href="../">Back to home</a></footer>
+  <script src="../script.js?v=51" defer></script>
+</body>
+</html>
