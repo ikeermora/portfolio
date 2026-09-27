@@ -1,420 +1,187 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Silicio-16 custom 16-bit processor project by Iker Garcia Morales." />
-    <title>Silicio-16 | Iker Garcia Morales</title>
-    <link rel="icon" type="image/png" href="../assets/favicon-wafer.png" />
-    <link rel="apple-touch-icon" href="../assets/favicon-wafer.png" />
-    <script>
-      document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
-    </script>
-    <!-- Google Analytics 4: configure the Measurement ID in ../analytics-config.js. -->
-    <script src="../analytics-config.js?v=1"></script>
-    <script src="../analytics.js?v=1"></script>
-    <link rel="stylesheet" href="../styles.css?v=49" />
-  </head>
-  <body>
-    <div class="ambient ambient-one"></div>
-    <div class="ambient ambient-two"></div>
+<!DOCTYPE html>
 
-    <header class="site-header">
-      <a class="brand" href="../" aria-label="Iker Garcia Morales home">
-        <span class="brand-mark">IGM</span>
-        <span class="brand-name">Iker Garcia Morales</span>
-      </a>
-      <div class="header-controls">
-        <nav class="nav-links" aria-label="Project navigation">
-          <a href="../#work">Work</a>
-          <a href="../#about">Me</a>
-          <a href="../#contact">Contact</a>
-        </nav>
-        <button class="theme-toggle" type="button" aria-label="Turn on night mode" aria-pressed="false">
-          <span aria-hidden="true">☾</span>
-        </button>
-      </div>
-    </header>
-
-    <main class="project-page silicio-page">
-      <section class="project-hero silicio-hero section-shell">
-        <div class="silicio-hero-copy">
-          <p class="eyebrow">Computer Architecture / RTL</p>
-          <h1>Silicio-16.</h1>
-          <p class="hero-text">A compact 16-bit processor built from first principles.</p>
-          <p class="silicio-summary">
-            Silicio-16 is a custom multicycle CPU designed in SystemVerilog. The project
-            explores a complete small processor flow: custom ISA design, RTL datapath
-            implementation, control sequencing, memory behavior, and verification through
-            simulation waveforms.
-          </p>
-          <div class="tag-row" aria-label="Silicio-16 technologies">
-            <span>SystemVerilog</span>
-            <span>16-bit</span>
-            <span>Multicycle</span>
-            <span>Custom ISA</span>
-          </div>
-          <div class="project-nav">
-            <a class="button primary" href="https://github.com/ikeermora/silicio-16" target="_blank" rel="noreferrer">GitHub repository</a>
-            <a class="button secondary" href="https://github.com/ikeermora/silicio-16/tree/main/docs" target="_blank" rel="noreferrer">Documentation</a>
-            <a class="button secondary" href="https://ikeermora.github.io/simplesilicon/" target="_blank" rel="noreferrer">Open Simple Silicon</a>
-            <a class="button secondary" href="../#currently-building">Back to portfolio</a>
-          </div>
-          <div class="silicio-status-grid" aria-label="Silicio-16 project status">
-            <div>
-              <span>Current status</span>
-              <strong>Framebuffer / Graphics Demo</strong>
-            </div>
-            <div>
-              <span>Overall progress</span>
-              <strong>70%</strong>
-            </div>
-          </div>
-        </div>
-        <figure class="silicio-waveform-hero waveform-frame">
-          <a href="../assets/silicio-16/real-fibonacci-program.png" target="_blank" rel="noreferrer" aria-label="Open Fibonacci Program waveform at full resolution">
-            <img
-              src="../assets/silicio-16/real-fibonacci-program.png"
-              alt="Real Simple Silicon waveform capture of the Silicio-16 Fibonacci program showing memory writes and datapath activity."
-              fetchpriority="high"
-              decoding="async"
-            />
-          </a>
-          <figcaption>Real execution waveform from the Silicio-16 simulation artifacts.</figcaption>
-        </figure>
-      </section>
-
-      <section class="project-body section-shell">
-        <article class="project-copy">
-          <p class="section-kicker">Overview</p>
-          <p>
+<html lang="en"><head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Silicio-16 | Iker Garcia Morales</title>
+<meta content="A compact 16-bit processor built from first principles." name="description"/>
+<link href="https://ikermora.com/projects/silicio-16.html" rel="canonical"/>
+<meta content="website" property="og:type"/><meta content="Silicio-16 | Iker Garcia Morales" property="og:title"/>
+<meta content="A compact 16-bit processor built from first principles." property="og:description"/><meta content="https://ikermora.com/projects/silicio-16.html" property="og:url"/>
+<meta content="https://ikermora.com/assets/social-preview.png" property="og:image"/><meta content="Silicon design, digital systems, and robotics. Iker Garcia Morales." property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="../assets/favicon-wafer.png" rel="icon" type="image/png"/><link href="../assets/favicon-wafer.png" rel="apple-touch-icon"/>
+<link href="../styles.css?v=50" rel="stylesheet"/>
+<script defer="" src="../analytics-config.js?v=1"></script><script defer="" src="../analytics.js?v=1"></script>
+</head><body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header shell"><a class="brand" href="../">Iker Garcia Morales</a><nav aria-label="Primary navigation"><a href="../#work">Work</a><a href="../#about">About</a><a aria-label="Resume (PDF, opens in a new tab)" href="../files/Iker%27s%20Resume.pdf" rel="noopener" target="_blank">Resume</a><a href="../#contact">Contact</a></nav></header>
+<main class="shell" id="main"><section class="page-hero"><p class="eyebrow">Computer Architecture / RTL</p><h1>Silicio-16</h1><p class="hero-intro">A compact 16-bit processor built from first principles.</p><div class="project-links">
+<a class="text-link" href="https://github.com/ikeermora/silicio-16" rel="noopener noreferrer" target="_blank">GitHub repository</a>
+<a class="text-link" href="https://github.com/ikeermora/silicio-16/tree/main/docs" rel="noopener noreferrer" target="_blank">Documentation</a>
+<a class="text-link" href="https://ikeermora.github.io/simplesilicon/" rel="noopener noreferrer" target="_blank">Open Simple Silicon</a>
+</div></section><figure class="lead-figure"><a href="../assets/silicio-16/real-fibonacci-program.png"><img alt="Real Simple Silicon waveform capture of the Silicio-16 Fibonacci program showing memory writes and datapath activity." decoding="async" height="597" loading="lazy" src="../assets/silicio-16/real-fibonacci-program.png" width="1024"/></a><figcaption>Real Simple Silicon waveform capture of the Silicio-16 Fibonacci program showing memory writes and datapath activity.</figcaption></figure><section class="case-section"><h2>Context</h2><div><p>
             Silicio-16 is a compact 16-bit processor project built to understand how a CPU
             moves from instruction set design into hardware execution. The goal is not to
             make a large processor, but to build a clear one: small enough to reason about,
             complete enough to execute real programs, and structured enough to keep growing.
-          </p>
-          <p>
+          </p><p>
             The project currently includes a custom ISA, a multicycle RTL datapath, a
             finite-state control unit, separate instruction and data memory, regression
             testing, and program-level simulations. Current work is focused on framebuffer
             and graphics demos before future FPGA integration.
-          </p>
-        </article>
-
-        <section class="project-deep-dive" aria-labelledby="silicio-architecture-title">
-          <p class="section-kicker">Architecture & Datapath</p>
-          <h2 id="silicio-architecture-title">Processor structure.</h2>
-
-          <div class="silicio-spec-grid" aria-label="Silicio-16 processor specifications">
-            <div><span>Data width</span><strong>16-bit</strong></div>
-            <div><span>Instruction width</span><strong>16-bit</strong></div>
-            <div><span>Registers</span><strong>8 general-purpose</strong></div>
-            <div><span>Execution model</span><strong>Multicycle</strong></div>
-            <div><span>ISA</span><strong>Custom</strong></div>
-            <div><span>Memory</span><strong>Separate instruction and data memory</strong></div>
-          </div>
-
-          <figure class="silicio-diagram">
-            <div class="magnify-target" data-magnifier>
-              <img
-                src="../assets/silicio-16/datapath-schematic-v2.png"
-                alt="Silicio-16 datapath schematic showing the program counter, instruction register, register file, ALU, memory paths, and control signals."
-                loading="lazy"
-                decoding="async"
-              />
-              <span class="magnifier-lens" aria-hidden="true"></span>
-            </div>
-            <figcaption>Datapath schematic from the Silicio-16 architecture documentation.</figcaption>
-          </figure>
-
-          <div class="accordion" data-accordion>
-            <div class="accordion-item is-open">
-              <button class="accordion-trigger" type="button" aria-expanded="true" aria-controls="silicio-datapath-core">
-                Datapath Core
-              </button>
-              <div class="accordion-content" id="silicio-datapath-core">
-                <div class="accordion-inner">
-                  <p>
+          </p></div></section><section class="case-section"><h2>Processor structure</h2><div><div aria-label="Silicio-16 processor specifications" class="silicio-spec-grid">
+<div><span>Data width</span><strong>16-bit</strong></div>
+<div><span>Instruction width</span><strong>16-bit</strong></div>
+<div><span>Registers</span><strong>8 general-purpose</strong></div>
+<div><span>Execution model</span><strong>Multicycle</strong></div>
+<div><span>ISA</span><strong>Custom</strong></div>
+<div><span>Memory</span><strong>Separate instruction and data memory</strong></div>
+</div><figure class="silicio-datapath-figure"><a href="../assets/silicio-16/datapath-schematic-v2.png"><img alt="Silicio-16 datapath schematic showing the program counter, instruction register, register file, ALU, memory paths, and control signals." decoding="async" height="1298" loading="lazy" src="../assets/silicio-16/datapath-schematic-v2.png" width="1764"/></a><figcaption>Datapath schematic from the Silicio-16 architecture documentation.</figcaption></figure><details><summary>Datapath Core</summary><div class="detail-copy">
+<p>
                     The datapath connects the program counter, instruction register, register
                     file, A/B operand registers, ALU, ALU output register, immediate extension,
                     memory data register, and flags register. These blocks form the path used
                     by arithmetic, memory, and control-flow instructions.
                   </p>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="silicio-control">
-                Control & Execution
-              </button>
-              <div class="accordion-content" id="silicio-control">
-                <div class="accordion-inner">
-                  <p>
+</div></details><details><summary>Control &amp; Execution</summary><div class="detail-copy">
+<p>
                     A centralized finite-state control unit sequences each instruction across
                     multiple cycles. This keeps the processor small and readable while still
                     allowing instruction fetch, decode, execute, memory access, and writeback
                     behavior to happen in a controlled order.
                   </p>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="silicio-memory">
-                Memory System
-              </button>
-              <div class="accordion-content" id="silicio-memory">
-                <div class="accordion-inner">
-                  <p>
+</div></details><details><summary>Memory System</summary><div class="detail-copy">
+<p>
                     Silicio-16 uses separate instruction and data memory. Instruction memory
                     feeds the fetch path, while data memory supports LOAD and STORE behavior
                     through the memory data register and ALU-generated addresses.
                   </p>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="silicio-isa">
-                ISA Coverage
-              </button>
-              <div class="accordion-content" id="silicio-isa">
-                <div class="accordion-inner">
-                  <p>
+</div></details><details><summary>ISA Coverage</summary><div class="detail-copy">
+<p>
                     The current ISA includes arithmetic, bitwise, comparison, move, immediate,
                     memory, branch, jump, and halt instructions. The regression suite checks
                     the main behavior across these instruction families.
                   </p>
-                  <pre><code>NOP ADD SUB AND OR XOR SIM MOV LDI LOAD STORE CMP BEQ BNE JMP HALT</code></pre>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="project-deep-dive" aria-labelledby="silicio-verification-title">
-          <p class="section-kicker">Verification & Waveforms</p>
-          <h2 id="silicio-verification-title">Simulation evidence.</h2>
-          <p class="silicio-section-note">
-            These entries use real Simple Silicon waveform screenshots captured during
-            Silicio-16 verification.
-          </p>
-
-          <div class="accordion verification-accordion" data-accordion>
-            <div class="accordion-item is-open">
-              <button class="accordion-trigger" type="button" aria-expanded="true" aria-controls="silicio-add-test">
-                <span>ADD Test</span>
-                <span class="test-status is-pass">Verified</span>
-              </button>
-              <div class="accordion-content" id="silicio-add-test">
-                <div class="accordion-inner">
-                  <p>
+<pre><code>NOP ADD SUB AND OR XOR SIM MOV LDI LOAD STORE CMP BEQ BNE JMP HALT</code></pre>
+</div></details></div></section><section class="case-section"><h2>Simulation evidence</h2><div><details><summary>ADD Test Verified</summary><div class="detail-copy">
+<p>
                     This capture checks the ADD execution path and shows the ALU result moving
                     through the processor datapath during the test.
                   </p>
-                  <figure class="waveform-frame">
-                    <a href="../assets/silicio-16/real-add-test.png" target="_blank" rel="noreferrer" aria-label="Open ADD Test waveform at full resolution">
-                      <img src="../assets/silicio-16/real-add-test.png" alt="Real Simple Silicon waveform capture for the Silicio-16 ADD test." loading="lazy" decoding="async" />
-                    </a>
-                    <figcaption>ADD Test: validates arithmetic result propagation through the ALU path.</figcaption>
-                  </figure>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="silicio-memory-test">
-                <span>Load & Store Test</span>
-                <span class="test-status is-pass">Verified</span>
-              </button>
-              <div class="accordion-content" id="silicio-memory-test">
-                <div class="accordion-inner">
-                  <p>
+<figure class="waveform-frame">
+<a aria-label="Open ADD Test waveform at full resolution" href="../assets/silicio-16/real-add-test.png" rel="noopener noreferrer" target="_blank">
+<img alt="Real Simple Silicon waveform capture for the Silicio-16 ADD test." decoding="async" height="330" loading="lazy" src="../assets/silicio-16/real-add-test.png" width="2692"/>
+</a>
+<figcaption>ADD Test: validates arithmetic result propagation through the ALU path.</figcaption>
+</figure>
+</div></details><details><summary>Load &amp; Store Test Verified</summary><div class="detail-copy">
+<p>
                     The memory test stores a register value into data memory and loads it back
                     into another register. This validates the address path, memory write
                     control, memory data register, and register writeback behavior.
                   </p>
-                  <figure class="waveform-frame">
-                    <a href="../assets/silicio-16/real-load-store-test.png" target="_blank" rel="noreferrer" aria-label="Open Load and Store Test waveform at full resolution">
-                      <img src="../assets/silicio-16/real-load-store-test.png" alt="Real Simple Silicon waveform capture for the Silicio-16 load and store test." loading="lazy" decoding="async" />
-                    </a>
-                    <figcaption>Load & Store Test: confirms memory data can be written and read back through the CPU path.</figcaption>
-                  </figure>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="silicio-flow-test">
-                <span>Flow Control</span>
-                <span class="test-status is-pass">Verified</span>
-              </button>
-              <div class="accordion-content" id="silicio-flow-test">
-                <div class="accordion-inner">
-                  <p>
+<figure class="waveform-frame">
+<a aria-label="Open Load and Store Test waveform at full resolution" href="../assets/silicio-16/real-load-store-test.png" rel="noopener noreferrer" target="_blank">
+<img alt="Real Simple Silicon waveform capture for the Silicio-16 load and store test." decoding="async" height="680" loading="lazy" src="../assets/silicio-16/real-load-store-test.png" width="2686"/>
+</a>
+<figcaption>Load &amp; Store Test: confirms memory data can be written and read back through the CPU path.</figcaption>
+</figure>
+</div></details><details><summary>Flow Control Verified</summary><div class="detail-copy">
+<p>
                     Flow-control testing covers program counter updates through jump, NOP,
                     halt stability, and branch offset behavior. The waveform keeps the focus
                     on PC movement and instruction sequencing.
                   </p>
-                  <figure class="waveform-frame">
-                    <a href="../assets/silicio-16/real-flow-control.png" target="_blank" rel="noreferrer" aria-label="Open Flow Control waveform at full resolution">
-                      <img src="../assets/silicio-16/real-flow-control.png" alt="Real Simple Silicon waveform capture for Silicio-16 flow control." loading="lazy" decoding="async" />
-                    </a>
-                    <figcaption>Flow Control: shows program counter movement through the control path.</figcaption>
-                  </figure>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="silicio-conditional-test">
-                <span>Conditional Flow Control</span>
-                <span class="test-status is-pass">Verified</span>
-              </button>
-              <div class="accordion-content" id="silicio-conditional-test">
-                <div class="accordion-inner">
-                  <p>
+<figure class="waveform-frame">
+<a aria-label="Open Flow Control waveform at full resolution" href="../assets/silicio-16/real-flow-control.png" rel="noopener noreferrer" target="_blank">
+<img alt="Real Simple Silicon waveform capture for Silicio-16 flow control." decoding="async" height="640" loading="lazy" src="../assets/silicio-16/real-flow-control.png" width="2862"/>
+</a>
+<figcaption>Flow Control: shows program counter movement through the control path.</figcaption>
+</figure>
+</div></details><details><summary>Conditional Flow Control Verified</summary><div class="detail-copy">
+<p>
                     Conditional-flow tests include BEQ and BNE cases where the branch is taken
                     and not taken. The regression also includes a negative branch offset case
                     to check signed control-flow behavior.
                   </p>
-                  <figure class="waveform-frame">
-                    <a href="../assets/silicio-16/real-conditional-flow.png" target="_blank" rel="noreferrer" aria-label="Open Conditional Flow Control waveform at full resolution">
-                      <img src="../assets/silicio-16/real-conditional-flow.png" alt="Real Simple Silicon waveform capture for Silicio-16 conditional flow control." loading="lazy" decoding="async" />
-                    </a>
-                    <figcaption>Conditional Flow Control: validates conditional PC updates and control sequencing.</figcaption>
-                  </figure>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="silicio-alu-basic-test">
-                <span>ALU Test 1 — Basic Operations</span>
-                <span class="test-status is-pass">Verified</span>
-              </button>
-              <div class="accordion-content" id="silicio-alu-basic-test">
-                <div class="accordion-inner">
-                  <p>
+<figure class="waveform-frame">
+<a aria-label="Open Conditional Flow Control waveform at full resolution" href="../assets/silicio-16/real-conditional-flow.png" rel="noopener noreferrer" target="_blank">
+<img alt="Real Simple Silicon waveform capture for Silicio-16 conditional flow control." decoding="async" height="1506" loading="lazy" src="../assets/silicio-16/real-conditional-flow.png" width="2708"/>
+</a>
+<figcaption>Conditional Flow Control: validates conditional PC updates and control sequencing.</figcaption>
+</figure>
+</div></details><details><summary>ALU Test 1 — Basic Operations Verified</summary><div class="detail-copy">
+<p>
                     This test loads 12 and 5 into R1 and R2, executes SUB, AND, OR, and XOR,
                     stores the results in R3 through R6, and ends with HALT.
                   </p>
-                  <figure class="waveform-frame">
-                    <a href="../assets/silicio-16/real-alu-basic.png" target="_blank" rel="noreferrer" aria-label="Open ALU Test 1 waveform at full resolution">
-                      <img src="../assets/silicio-16/real-alu-basic.png" alt="Real Simple Silicon waveform capture for Silicio-16 ALU Test 1 basic operations." loading="lazy" decoding="async" />
-                    </a>
-                    <figcaption>ALU Test 1: proves the basic arithmetic and bitwise operation paths.</figcaption>
-                  </figure>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="silicio-alu-sim-mov-test">
-                <span>ALU Test 2 — SIM and MOV</span>
-                <span class="test-status is-pass">Verified</span>
-              </button>
-              <div class="accordion-content" id="silicio-alu-sim-mov-test">
-                <div class="accordion-inner">
-                  <p>
+<figure class="waveform-frame">
+<a aria-label="Open ALU Test 1 waveform at full resolution" href="../assets/silicio-16/real-alu-basic.png" rel="noopener noreferrer" target="_blank">
+<img alt="Real Simple Silicon waveform capture for Silicio-16 ALU Test 1 basic operations." decoding="async" height="700" loading="lazy" src="../assets/silicio-16/real-alu-basic.png" width="2818"/>
+</a>
+<figcaption>ALU Test 1: proves the basic arithmetic and bitwise operation paths.</figcaption>
+</figure>
+</div></details><details><summary>ALU Test 2 — SIM and MOV Verified</summary><div class="detail-copy">
+<p>
                     This test loads 0x00FF and 0x000F, executes the custom SIM instruction,
                     copies the result with MOV, and ends with HALT.
                   </p>
-                  <figure class="waveform-frame">
-                    <a href="../assets/silicio-16/real-alu-sim-mov.png" target="_blank" rel="noreferrer" aria-label="Open ALU Test 2 waveform at full resolution">
-                      <img src="../assets/silicio-16/real-alu-sim-mov.png" alt="Real Simple Silicon waveform capture for Silicio-16 ALU Test 2 SIM and MOV." loading="lazy" decoding="async" />
-                    </a>
-                    <figcaption>ALU Test 2: verifies the custom SIM instruction and MOV result transfer.</figcaption>
-                  </figure>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="silicio-reverse-flow-test">
-                <span>Reverse Conditional Flow and Halt</span>
-                <span class="test-status is-pass">Verified</span>
-              </button>
-              <div class="accordion-content" id="silicio-reverse-flow-test">
-                <div class="accordion-inner">
-                  <p>
+<figure class="waveform-frame">
+<a aria-label="Open ALU Test 2 waveform at full resolution" href="../assets/silicio-16/real-alu-sim-mov.png" rel="noopener noreferrer" target="_blank">
+<img alt="Real Simple Silicon waveform capture for Silicio-16 ALU Test 2 SIM and MOV." decoding="async" height="670" loading="lazy" src="../assets/silicio-16/real-alu-sim-mov.png" width="2850"/>
+</a>
+<figcaption>ALU Test 2: verifies the custom SIM instruction and MOV result transfer.</figcaption>
+</figure>
+</div></details><details><summary>Reverse Conditional Flow and Halt Verified</summary><div class="detail-copy">
+<p>
                     This test loads R1 = 5 and R2 = 10, uses CMP and BNE to skip address 4,
                     uses JMP to skip address 6, and reaches HALT at address 7.
                   </p>
-                  <figure class="waveform-frame">
-                    <a href="../assets/silicio-16/real-reverse-conditional-halt.png" target="_blank" rel="noreferrer" aria-label="Open Reverse Conditional Flow and Halt waveform at full resolution">
-                      <img src="../assets/silicio-16/real-reverse-conditional-halt.png" alt="Real Simple Silicon waveform capture for Silicio-16 reverse conditional flow and halt." loading="lazy" decoding="async" />
-                    </a>
-                    <figcaption>Reverse Conditional Flow and Halt: checks branch decisions, jump behavior, and final HALT sequencing.</figcaption>
-                  </figure>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="silicio-fibonacci-test">
-                <span>Fibonacci Program</span>
-                <span class="test-status is-pass">Verified</span>
-              </button>
-              <div class="accordion-content" id="silicio-fibonacci-test">
-                <div class="accordion-inner">
-                  <p>
+<figure class="waveform-frame">
+<a aria-label="Open Reverse Conditional Flow and Halt waveform at full resolution" href="../assets/silicio-16/real-reverse-conditional-halt.png" rel="noopener noreferrer" target="_blank">
+<img alt="Real Simple Silicon waveform capture for Silicio-16 reverse conditional flow and halt." decoding="async" height="1070" loading="lazy" src="../assets/silicio-16/real-reverse-conditional-halt.png" width="2826"/>
+</a>
+<figcaption>Reverse Conditional Flow and Halt: checks branch decisions, jump behavior, and final HALT sequencing.</figcaption>
+</figure>
+</div></details><details><summary>Fibonacci Program Verified</summary><div class="detail-copy">
+<p>
                     This is the strongest system-level demonstration because it combines
                     arithmetic, looping, register operations, control flow, and memory writes.
                   </p>
-                  <figure class="waveform-frame">
-                    <a href="../assets/silicio-16/real-fibonacci-program.png" target="_blank" rel="noreferrer" aria-label="Open Fibonacci Program waveform at full resolution">
-                      <img src="../assets/silicio-16/real-fibonacci-program.png" alt="Real Simple Silicon waveform capture for the Silicio-16 Fibonacci program." loading="lazy" decoding="async" />
-                    </a>
-                    <figcaption>Fibonacci Program: system-level execution with arithmetic, loop control, registers, and memory writes.</figcaption>
-                  </figure>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="project-deep-dive" aria-labelledby="silicio-roadmap-title">
-          <p class="section-kicker">Project Roadmap</p>
-          <h2 id="silicio-roadmap-title">Where it stands.</h2>
-          <div class="case-roadmap" aria-label="Silicio-16 roadmap">
-            <div class="is-complete"><span>Architecture & ISA</span><strong>Complete</strong></div>
-            <div class="is-complete"><span>Datapath RTL</span><strong>Complete</strong></div>
-            <div class="is-complete"><span>RTL Bring-Up</span><strong>Complete</strong></div>
-            <div class="is-complete"><span>First Program Execution</span><strong>Complete</strong></div>
-            <div class="is-complete"><span>Full ISA Verification</span><strong>Complete</strong></div>
-            <div class="is-current"><span>Framebuffer / Graphics Demo</span><strong>Current</strong></div>
-            <div class="is-upcoming"><span>FPGA Integration</span><strong>Upcoming</strong></div>
-            <div class="is-future"><span>Silicon Exploration</span><strong>Future</strong></div>
-          </div>
-          <div class="progress-meta">
-            <span>Overall project progress</span>
-            <span>70%</span>
-          </div>
-          <div class="progress-track" aria-label="Silicio-16 progress: 70%">
-            <span style="width: 70%"></span>
-          </div>
-        </section>
-
-        <aside class="project-facts">
-          <dl>
-            <div>
-              <dt>GitHub repository</dt>
-              <dd><a href="https://github.com/ikeermora/silicio-16" target="_blank" rel="noreferrer">github.com/ikeermora/silicio-16</a></dd>
-            </div>
-            <div>
-              <dt>Architecture documentation</dt>
-              <dd><a href="https://github.com/ikeermora/silicio-16/blob/main/docs/datapath.md" target="_blank" rel="noreferrer">Datapath documentation</a></dd>
-            </div>
-            <div>
-              <dt>ISA documentation</dt>
-              <dd><a href="https://github.com/ikeermora/silicio-16/blob/main/docs/isa.md" target="_blank" rel="noreferrer">Instruction set documentation</a></dd>
-            </div>
-            <div>
-              <dt>Verification material</dt>
-              <dd><a href="https://github.com/ikeermora/silicio-16/tree/main/tb" target="_blank" rel="noreferrer">Testbenches and regression files</a></dd>
-            </div>
-          </dl>
-        </aside>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <p>© 2026 Iker Garcia Morales</p>
-      <a href="../#top">Back to top</a>
-    </footer>
-
-    <script src="../script.js?v=43"></script>
-  </body>
-</html>
+<figure class="waveform-frame">
+<a aria-label="Open Fibonacci Program waveform at full resolution" href="../assets/silicio-16/real-fibonacci-program.png" rel="noopener noreferrer" target="_blank">
+<img alt="Real Simple Silicon waveform capture for the Silicio-16 Fibonacci program." decoding="async" height="597" loading="lazy" src="../assets/silicio-16/real-fibonacci-program.png" width="1024"/>
+</a>
+<figcaption>Fibonacci Program: system-level execution with arithmetic, loop control, registers, and memory writes.</figcaption>
+</figure>
+</div></details></div></section><section class="case-section"><h2>Where it stands</h2><div><div aria-label="Silicio-16 roadmap" class="case-roadmap">
+<div class="is-complete"><span>Architecture &amp; ISA</span><strong>Complete</strong></div>
+<div class="is-complete"><span>Datapath RTL</span><strong>Complete</strong></div>
+<div class="is-complete"><span>RTL Bring-Up</span><strong>Complete</strong></div>
+<div class="is-complete"><span>First Program Execution</span><strong>Complete</strong></div>
+<div class="is-complete"><span>Full ISA Verification</span><strong>Complete</strong></div>
+<div class="is-current"><span>Framebuffer / Graphics Demo</span><strong>Current</strong></div>
+<div class="is-upcoming"><span>FPGA Integration</span><strong>Upcoming</strong></div>
+<div class="is-future"><span>Silicon Exploration</span><strong>Future</strong></div>
+</div></div></section><section class="case-section"><h2>Project details</h2><div class="project-facts">
+<dl>
+<div>
+<dt>GitHub repository</dt>
+<dd><a href="https://github.com/ikeermora/silicio-16" rel="noopener noreferrer" target="_blank">github.com/ikeermora/silicio-16</a></dd>
+</div>
+<div>
+<dt>Architecture documentation</dt>
+<dd><a href="https://github.com/ikeermora/silicio-16/blob/main/docs/datapath.md" rel="noopener noreferrer" target="_blank">Datapath documentation</a></dd>
+</div>
+<div>
+<dt>ISA documentation</dt>
+<dd><a href="https://github.com/ikeermora/silicio-16/blob/main/docs/isa.md" rel="noopener noreferrer" target="_blank">Instruction set documentation</a></dd>
+</div>
+<div>
+<dt>Verification material</dt>
+<dd><a href="https://github.com/ikeermora/silicio-16/tree/main/tb" rel="noopener noreferrer" target="_blank">Testbenches and regression files</a></dd>
+</div>
+</dl>
+</div></section><div class="back-link"><a class="text-link" href="index.html">All projects <span aria-hidden="true">→</span></a></div></main>
+<footer class="site-footer shell"><span>© 2026 Iker Garcia Morales</span><a href="../">Back to home</a></footer>
+</body></html>

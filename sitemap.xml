@@ -1,27 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://ikeermora.github.io/portfolio/</loc>
-  </url>
-  <url>
-    <loc>https://ikeermora.github.io/portfolio/projects/cansat-flight-computer.html</loc>
-  </url>
-  <url>
-    <loc>https://ikeermora.github.io/portfolio/projects/low-voltage-disconnect.html</loc>
-  </url>
-  <url>
-    <loc>https://ikeermora.github.io/portfolio/projects/mips8-processor.html</loc>
-  </url>
-  <url>
-    <loc>https://ikeermora.github.io/portfolio/projects/similarity-detector.html</loc>
-  </url>
-  <url>
-    <loc>https://ikeermora.github.io/portfolio/projects/silicio-16.html</loc>
-  </url>
-  <url>
-    <loc>https://ikeermora.github.io/portfolio/writing/behind-the-work.html</loc>
-  </url>
-  <url>
-    <loc>https://ikeermora.github.io/portfolio/writing/notes.html</loc>
-  </url>
+  <url><loc>https://ikermora.com/</loc></url>
+  <url><loc>https://ikermora.com/projects/cansat-flight-computer.html</loc></url>
+  <url><loc>https://ikermora.com/projects/index.html</loc></url>
+  <url><loc>https://ikermora.com/projects/low-voltage-disconnect.html</loc></url>
+  <url><loc>https://ikermora.com/projects/mips8-processor.html</loc></url>
+  <url><loc>https://ikermora.com/projects/silicio-16.html</loc></url>
+  <url><loc>https://ikermora.com/projects/similarity-detector.html</loc></url>
+  <url><loc>https://ikermora.com/projects/simple-silicon.html</loc></url>
+  <url><loc>https://ikermora.com/writing/behind-the-work.html</loc></url>
+  <url><loc>https://ikermora.com/writing/notes.html</loc></url>
 </urlset>

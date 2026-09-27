@@ -1,197 +1,106 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Similarity Detector ASIC project by Iker Garcia Morales." />
-    <title>Similarity Detector | Iker Garcia Morales</title>
-    <link rel="icon" type="image/png" href="../assets/favicon-wafer.png" />
-    <link rel="apple-touch-icon" href="../assets/favicon-wafer.png" />
-    <script>
-      document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
-    </script>
-    <!-- Google Analytics 4: configure the Measurement ID in ../analytics-config.js. -->
-    <script src="../analytics-config.js?v=1"></script>
-    <script src="../analytics.js?v=1"></script>
-    <link rel="stylesheet" href="../styles.css?v=49" />
-  </head>
-  <body>
-    <div class="ambient ambient-one"></div>
-    <div class="ambient ambient-two"></div>
+<!DOCTYPE html>
 
-    <header class="site-header">
-      <a class="brand" href="../" aria-label="Iker Garcia Morales home">
-        <span class="brand-mark">IGM</span>
-        <span class="brand-name">Iker Garcia Morales</span>
-      </a>
-      <div class="header-controls">
-        <nav class="nav-links" aria-label="Project navigation">
-          <a href="../#work">Work</a>
-          <a href="../#about">Me</a>
-          <a href="../#contact">Contact</a>
-        </nav>
-        <button class="theme-toggle" type="button" aria-label="Turn on night mode" aria-pressed="false">
-          <span aria-hidden="true">☾</span>
-        </button>
-      </div>
-    </header>
-
-    <main class="project-page">
-      <section class="project-hero section-shell">
-        <div>
-          <p class="eyebrow">ASIC</p>
-          <h1>Similarity Detector ASIC.</h1>
-          <p class="hero-text">
-            Hardware-accelerated vector similarity detection implemented through a full-custom ASIC design flow.
-          </p>
-          <div class="project-nav">
-            <a class="button primary" href="https://github.com/ikeermora/similarity-detector" target="_blank" rel="noreferrer">GitHub files</a>
-            <a class="button secondary" href="../#work">Back to projects</a>
-          </div>
-        </div>
-        <div class="project-media">
-          <img
-            class="theme-image theme-image-light"
-            src="../assets/core_white_similarity.png"
-            alt="Core layout view of the Similarity Detector ASIC."
-          />
-          <img
-            class="theme-image theme-image-dark"
-            src="../assets/core_black_similarity.png"
-            alt="Core layout view of the Similarity Detector ASIC."
-          />
-        </div>
-      </section>
-
-      <section class="project-gallery section-shell" aria-label="Similarity Detector ASIC images">
-        <figure>
-          <img
-            class="theme-image theme-image-light"
-            src="../assets/Similarity_detector_white.png"
-            alt="Full chip layout view of the Similarity Detector ASIC."
-          />
-          <img
-            class="theme-image theme-image-dark"
-            src="../assets/Similarity_detector_black.png"
-            alt="Full chip layout view of the Similarity Detector ASIC."
-          />
-          <figcaption>Full chip layout</figcaption>
-        </figure>
-        <figure>
-          <img src="../assets/Similarity_detector_gdsii_white.png" alt="GDSII layout view of the Similarity Detector ASIC." />
-          <figcaption>GDSII layout view</figcaption>
-        </figure>
-      </section>
-
-      <section class="project-body section-shell">
-        <article class="project-copy">
-          <p>
+<html lang="en"><head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Similarity Detector ASIC | Iker Garcia Morales</title>
+<meta content="Hardware-accelerated vector similarity detection implemented through a full-custom ASIC design flow." name="description"/>
+<link href="https://ikermora.com/projects/similarity-detector.html" rel="canonical"/>
+<meta content="website" property="og:type"/><meta content="Similarity Detector ASIC | Iker Garcia Morales" property="og:title"/>
+<meta content="Hardware-accelerated vector similarity detection implemented through a full-custom ASIC design flow." property="og:description"/><meta content="https://ikermora.com/projects/similarity-detector.html" property="og:url"/>
+<meta content="https://ikermora.com/assets/social-preview.png" property="og:image"/><meta content="Silicon design, digital systems, and robotics. Iker Garcia Morales." property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="../assets/favicon-wafer.png" rel="icon" type="image/png"/><link href="../assets/favicon-wafer.png" rel="apple-touch-icon"/>
+<link href="../styles.css?v=50" rel="stylesheet"/>
+<script defer="" src="../analytics-config.js?v=1"></script><script defer="" src="../analytics.js?v=1"></script>
+</head><body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header shell"><a class="brand" href="../">Iker Garcia Morales</a><nav aria-label="Primary navigation"><a href="../#work">Work</a><a href="../#about">About</a><a aria-label="Resume (PDF, opens in a new tab)" href="../files/Iker%27s%20Resume.pdf" rel="noopener" target="_blank">Resume</a><a href="../#contact">Contact</a></nav></header>
+<main class="shell" id="main"><section class="page-hero"><p class="eyebrow">ASIC</p><h1>Similarity Detector ASIC</h1><p class="hero-intro">Hardware-accelerated vector similarity detection implemented through a full-custom ASIC design flow.</p><div class="project-links">
+<a class="text-link" href="https://github.com/ikeermora/similarity-detector" rel="noopener noreferrer" target="_blank">GitHub files</a>
+</div></section><figure class="lead-figure"><a href="../assets/core_white_similarity.png"><img alt="Core layout view of the Similarity Detector ASIC." decoding="async" height="758" loading="lazy" src="../assets/core_white_similarity.png" width="1726"/></a><figcaption>Core layout view of the Similarity Detector ASIC.</figcaption></figure><section class="case-section"><h2>Context</h2><div><p>
             The Similarity Detector was developed as the final project for an Integrated
             Circuits Design course and implements a custom ASIC using a full-custom VLSI
             design flow.
-          </p>
-          <p>
+          </p><p>
             The circuit compares two 8-bit input vectors and determines whether their
             similarity exceeds a programmable threshold. Internally, the design performs
             bitwise XNOR operations to identify matching bits, counts the total number of
             matches, and compares the result against a user-defined threshold.
-          </p>
-          <p>
+          </p><p>
             The project was implemented from transistor-level schematics through physical
             layout and verification using Electric VLSI. Functional validation was performed
             through simulation and testbench development to ensure correct operation across
             multiple comparison scenarios.
-          </p>
-          <p>
+          </p><p>
             This design demonstrates how specialized hardware can accelerate decision-making
             tasks by performing comparisons directly in silicon.
-          </p>
-        </article>
-
-        <section class="project-deep-dive" aria-labelledby="similarity-how-title">
-          <p class="section-kicker">How It Works</p>
-          <h2 id="similarity-how-title">Engineering notes.</h2>
-          <div class="accordion" data-accordion>
-            <div class="accordion-item is-open">
-              <button class="accordion-trigger" type="button" aria-expanded="true" aria-controls="similarity-problem">
-                Problem
-              </button>
-              <div class="accordion-content" id="similarity-problem">
-                <div class="accordion-inner">
-                  <p>
+          </p></div></section><section class="case-section"><h2>Engineering notes</h2><div><details><summary>Problem</summary><div class="detail-copy">
+<p>
                     Comparing two binary vectors directly in hardware is useful when a system
                     needs to make fast similarity decisions without relying on software execution.
                   </p>
-                  <p>
+<p>
                     Instead of sending data to a processor, the circuit performs the comparison
                     entirely in combinational hardware, allowing similarity evaluation in a
                     single logic path.
                   </p>
-                  <p>
+<p>
                     This ASIC compares two 8-bit input vectors and determines whether the
                     number of matching bits meets or exceeds a programmable threshold.
                   </p>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="similarity-architecture">
-                Architecture
-              </button>
-              <div class="accordion-content" id="similarity-architecture">
-                <div class="accordion-inner">
-                  <p>The Similarity Detector is organized as a simple hardware pipeline.</p>
-                  <div class="architecture-diagram" aria-label="Similarity Detector ASIC architecture diagram">
-                    <svg viewBox="0 0 900 310" role="img" aria-labelledby="similarity-diagram-title">
-                      <title id="similarity-diagram-title">XNOR8 to match counter to threshold comparator block diagram</title>
-                      <defs>
-                        <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
-                          <path d="M0,0 L0,6 L7,3 z" />
-                        </marker>
-                      </defs>
-                      <g class="diagram-inputs">
-                        <text x="42" y="118">x[7:0]</text>
-                        <text x="42" y="192">w[7:0]</text>
-                        <line x1="105" y1="112" x2="170" y2="136" />
-                        <line x1="105" y1="186" x2="170" y2="166" />
-                      </g>
-                      <g class="diagram-block" transform="translate(170 105)">
-                        <rect width="170" height="92" rx="14" />
-                        <text class="diagram-code" x="85" y="38">XNOR8</text>
-                        <text x="85" y="64">Bitwise Compare</text>
-                      </g>
-                      <line class="diagram-bus" x1="340" y1="151" x2="425" y2="151" />
-                      <text class="diagram-signal" x="382" y="132">match[7:0]</text>
-                      <g class="diagram-block" transform="translate(425 105)">
-                        <rect width="190" height="92" rx="14" />
-                        <text class="diagram-code" x="95" y="38">match_counter8</text>
-                        <text x="95" y="64">Match Count</text>
-                      </g>
-                      <line class="diagram-bus" x1="615" y1="151" x2="700" y2="151" />
-                      <text class="diagram-signal" x="658" y="132">count[3:0]</text>
-                      <g class="diagram-block" transform="translate(700 105)">
-                        <rect width="170" height="92" rx="14" />
-                        <text class="diagram-code" x="85" y="38">comp4_ge</text>
-                        <text x="85" y="64">Threshold Compare</text>
-                      </g>
-                      <text x="742" y="272">b[3:0]</text>
-                      <line x1="785" y1="250" x2="785" y2="198" />
-                      <line class="diagram-bus" x1="870" y1="151" x2="886" y2="151" />
-                      <text x="822" y="82">out</text>
-                    </svg>
-                  </div>
-                  <p>
+</div></details><details><summary>Architecture</summary><div class="detail-copy">
+<p>The Similarity Detector is organized as a simple hardware pipeline.</p>
+<div aria-label="Similarity Detector ASIC architecture diagram" class="architecture-diagram">
+<svg aria-labelledby="similarity-diagram-title" role="img" viewbox="0 0 900 310">
+<title id="similarity-diagram-title">XNOR8 to match counter to threshold comparator block diagram</title>
+<defs>
+<marker id="arrowhead" markerheight="10" markerwidth="10" orient="auto" refx="7" refy="3">
+<path d="M0,0 L0,6 L7,3 z"></path>
+</marker>
+</defs>
+<g class="diagram-inputs">
+<text x="42" y="118">x[7:0]</text>
+<text x="42" y="192">w[7:0]</text>
+<line x1="105" x2="170" y1="112" y2="136"></line>
+<line x1="105" x2="170" y1="186" y2="166"></line>
+</g>
+<g class="diagram-block" transform="translate(170 105)">
+<rect height="92" rx="14" width="170"></rect>
+<text class="diagram-code" x="85" y="38">XNOR8</text>
+<text x="85" y="64">Bitwise Compare</text>
+</g>
+<line class="diagram-bus" x1="340" x2="425" y1="151" y2="151"></line>
+<text class="diagram-signal" x="382" y="132">match[7:0]</text>
+<g class="diagram-block" transform="translate(425 105)">
+<rect height="92" rx="14" width="190"></rect>
+<text class="diagram-code" x="95" y="38">match_counter8</text>
+<text x="95" y="64">Match Count</text>
+</g>
+<line class="diagram-bus" x1="615" x2="700" y1="151" y2="151"></line>
+<text class="diagram-signal" x="658" y="132">count[3:0]</text>
+<g class="diagram-block" transform="translate(700 105)">
+<rect height="92" rx="14" width="170"></rect>
+<text class="diagram-code" x="85" y="38">comp4_ge</text>
+<text x="85" y="64">Threshold Compare</text>
+</g>
+<text x="742" y="272">b[3:0]</text>
+<line x1="785" x2="785" y1="250" y2="198"></line>
+<line class="diagram-bus" x1="870" x2="886" y1="151" y2="151"></line>
+<text x="822" y="82">out</text>
+</svg>
+</div>
+<p>
                     Each pair of bits from x[7:0] and w[7:0] is compared using XNOR logic.
                     Matching bits produce a logic 1 while mismatches produce a logic 0.
                   </p>
-                  <p>
+<p>
                     The match_counter8 block counts the total number of matching bits and
                     generates a 4-bit count value. The comp4_ge comparator then checks whether
                     matches &gt;= threshold. If true, the output is asserted.
                   </p>
-                  <div class="example-operation">
-                    <h3>Example Operation</h3>
-                    <pre><code>x = 10110110
+<div class="example-operation">
+<h3>Example Operation</h3>
+<pre><code>x = 10110110
 w = 10100111
 
 XNOR result = 11100110
@@ -200,157 +109,131 @@ Matches = 6
 Threshold = 5
 
 Output = 1</code></pre>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="similarity-process">
-                Design Process
-              </button>
-              <div class="accordion-content" id="similarity-process">
-                <div class="accordion-inner">
-                  <p>The design was divided into reusable digital blocks:</p>
-                  <ol>
-                    <li>XNOR8</li>
-                    <li>Match Counter</li>
-                    <li>Threshold Comparator</li>
-                  </ol>
-                  <p>
+</div>
+</div></details><details><summary>Design Process</summary><div class="detail-copy">
+<p>The design was divided into reusable digital blocks:</p>
+<ol>
+<li>XNOR8</li>
+<li>Match Counter</li>
+<li>Threshold Comparator</li>
+</ol>
+<p>
                     Each block was first developed and verified independently before integration
                     into the top-level design.
                   </p>
-                  <p>
+<p>
                     After schematic construction, every module was translated into transistor-level
                     CMOS layout using Electric VLSI. The physical implementation followed the same
                     hierarchy used in the schematic design to simplify verification and debugging.
                   </p>
-                  <p>
+<p>
                     Once the core was validated, a complete chip-level layout was assembled with
                     padframe integration, power routing, ground distribution, and external I/O
                     connections.
                   </p>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="similarity-verification">
-                Verification
-              </button>
-              <div class="accordion-content" id="similarity-verification">
-                <div class="accordion-inner">
-                  <p>Functional verification was performed through switch-level simulation using IRSIM.</p>
-                  <p>Test cases included:</p>
-                  <ul>
-                    <li>Perfect matches</li>
-                    <li>Partial matches</li>
-                    <li>No-match conditions</li>
-                    <li>Threshold boundary cases</li>
-                    <li>Minimum threshold values</li>
-                    <li>Maximum threshold values</li>
-                  </ul>
-                  <pre><code>matches = popcount(x XNOR w)
+</div></details><details><summary>Verification</summary><div class="detail-copy">
+<p>Functional verification was performed through switch-level simulation using IRSIM.</p>
+<p>Test cases included:</p>
+<ul>
+<li>Perfect matches</li>
+<li>Partial matches</li>
+<li>No-match conditions</li>
+<li>Threshold boundary cases</li>
+<li>Minimum threshold values</li>
+<li>Maximum threshold values</li>
+</ul>
+<pre><code>matches = popcount(x XNOR w)
 output = matches &gt;= threshold</code></pre>
-                  <p>
+<p>
                     Physical verification included DRC, ERC, and NCC to ensure consistency
                     between schematic and layout implementations.
                   </p>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-trigger" type="button" aria-expanded="false" aria-controls="similarity-results">
-                Results
-              </button>
-              <div class="accordion-content" id="similarity-results">
-                <div class="accordion-inner">
-                  <p>
+</div></details><details><summary>Results</summary><div class="detail-copy">
+<p>
                     The final ASIC successfully evaluates similarity between two 8-bit vectors
                     and generates a binary decision based on a programmable threshold.
                   </p>
-                  <p>
+<p>
                     The project demonstrated the complete custom IC design flow, including
                     architecture development, transistor-level schematics, physical layout,
                     padframe integration, simulation, and verification.
                   </p>
-                  <p>
+<p>
                     Beyond the functional result, the project provided hands-on experience with
                     hierarchical VLSI design, physical routing challenges, and the verification
                     process required to transform a digital concept into a manufacturable
                     integrated circuit.
                   </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <aside class="project-facts">
-          <dl>
-            <div>
-              <dt>Architecture</dt>
-              <dd>XNOR matching logic, match counter, threshold comparator</dd>
-            </div>
-            <div>
-              <dt>Inputs</dt>
-              <dd>x[7:0], w[7:0], threshold b[3:0]</dd>
-            </div>
-            <div>
-              <dt>Focus</dt>
-              <dd>Custom ASIC design, digital logic, VLSI layout, hardware verification</dd>
-            </div>
-            <div>
-              <dt>Outcome</dt>
-              <dd>Fully verified ASIC capable of evaluating 8-bit vector similarity against a programmable threshold</dd>
-            </div>
-            <div>
-              <dt>Status</dt>
-              <dd>Completed and successfully verified</dd>
-            </div>
-          </dl>
-        </aside>
-      </section>
-
-      <section class="interactive-demo section-shell" data-demo="similarity">
-        <div class="section-heading">
-          <p class="section-kicker">Interactive Demo</p>
-          <h2>Vector similarity logic.</h2>
-        </div>
-        <div class="logic-demo">
-          <div class="bit-controls">
-            <div>
-              <h3>x[7:0]</h3>
-              <div class="bit-row" data-bit-row="x"></div>
-            </div>
-            <div>
-              <h3>w[7:0]</h3>
-              <div class="bit-row" data-bit-row="w"></div>
-            </div>
-            <label class="threshold-control">
+</div></details></div></section><section class="case-section"><h2>Project details</h2><div class="project-facts">
+<dl>
+<div>
+<dt>Architecture</dt>
+<dd>XNOR matching logic, match counter, threshold comparator</dd>
+</div>
+<div>
+<dt>Inputs</dt>
+<dd>x[7:0], w[7:0], threshold b[3:0]</dd>
+</div>
+<div>
+<dt>Focus</dt>
+<dd>Custom ASIC design, digital logic, VLSI layout, hardware verification</dd>
+</div>
+<div>
+<dt>Outcome</dt>
+<dd>Fully verified ASIC capable of evaluating 8-bit vector similarity against a programmable threshold</dd>
+</div>
+<div>
+<dt>Status</dt>
+<dd>Completed and successfully verified</dd>
+</div>
+</dl>
+</div></section><section class="gallery-section"><h2 class="rule-heading">Selected figures</h2><div class="project-gallery">
+<figure>
+<img alt="Full chip layout view of the Similarity Detector ASIC." class="theme-image theme-image-light" decoding="async" height="1108" loading="lazy" src="../assets/Similarity_detector_white.png" width="1266"/>
+<figcaption>Full chip layout</figcaption>
+</figure>
+<figure>
+<img alt="GDSII layout view of the Similarity Detector ASIC." decoding="async" height="1292" loading="lazy" src="../assets/Similarity_detector_gdsii_white.png" width="1518"/>
+<figcaption>GDSII layout view</figcaption>
+</figure>
+</div></section><section class="interactive-demo" data-demo="similarity">
+<div class="section-heading">
+<h2>Vector similarity logic</h2>
+</div>
+<div class="logic-demo">
+<div class="bit-controls">
+<div>
+<h3>x[7:0]</h3>
+<div class="bit-row" data-bit-row="x"></div>
+</div>
+<div>
+<h3>w[7:0]</h3>
+<div class="bit-row" data-bit-row="w"></div>
+</div>
+<label class="threshold-control">
               Threshold b
-              <input type="range" min="0" max="8" value="4" data-threshold />
-              <span data-threshold-value>4</span>
-            </label>
-          </div>
-          <div class="logic-flow" aria-label="Similarity Detector live output">
-            <div class="logic-node">
-              <span>XNOR</span>
-              <strong data-match-pattern>00000000</strong>
-            </div>
-            <div class="logic-wire"></div>
-            <div class="logic-node">
-              <span>Match Count</span>
-              <strong data-match-count>0</strong>
-            </div>
-            <div class="logic-wire"></div>
-            <div class="logic-node output-node">
-              <span>Output</span>
-              <strong data-output>0</strong>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-    <script src="../script.js?v=43"></script>
-  </body>
-</html>
+              <input data-threshold="" max="8" min="0" type="range" value="4"/>
+<span data-threshold-value="">4</span>
+</label>
+</div>
+<div aria-label="Similarity Detector live output" class="logic-flow">
+<div class="logic-node">
+<span>XNOR</span>
+<strong data-match-pattern="">00000000</strong>
+</div>
+<div class="logic-wire"></div>
+<div class="logic-node">
+<span>Match Count</span>
+<strong data-match-count="">0</strong>
+</div>
+<div class="logic-wire"></div>
+<div class="logic-node output-node">
+<span>Output</span>
+<strong data-output="">0</strong>
+</div>
+</div>
+</div>
+</section><div class="back-link"><a class="text-link" href="index.html">All projects <span aria-hidden="true">→</span></a></div></main>
+<footer class="site-footer shell"><span>© 2026 Iker Garcia Morales</span><a href="../">Back to home</a></footer>
+<script defer="" src="../script.js?v=50"></script>
+</body></html>

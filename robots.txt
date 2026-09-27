@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ikeermora.github.io/portfolio/sitemap.xml
+Sitemap: https://ikermora.com/sitemap.xml
